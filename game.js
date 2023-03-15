@@ -249,12 +249,46 @@ const pipes = {
             //если трубы выходят за пределы канваса удаляем их из массива
             if (p.x + this.w <= 0) {
                 this.position.shift();
+                score.value += 1;
+                score.best = Math.max(score.value, score.best);
+                localStorage.setItem('best', score.best)
 
             }
         }
 
     }
 
+}
+
+//Очки 
+const score = {
+    best: parseInt(localStorage.getItem('best')) || 0,
+    value: 0,
+
+    draw: function () {
+        ctx.fillStyle = "#FFF";
+        ctx.strokeStyle = "#000";
+
+        if (state.current == state.game) {
+            ctx.lineWidth = 2;
+            ctx.font = "35px Teko"
+            ctx.fillText(this.value, cvs.width / 2, 50)
+            ctx.strokeText(this.value, cvs.width / 2, 50)
+
+        } else if (state.current == state.over) {
+            //Результат 
+            ctx.font = "25px Teko"
+            ctx.fillText(this.value, 225, 186)
+            ctx.strokeText(this.value, 225, 186)
+
+            //Лучший результат 
+            ctx.fillText(this.best, 225, 225)
+            ctx.strokeText(this.best, 225, 225)
+
+
+        }
+
+    }
 }
 
 
@@ -269,6 +303,7 @@ function draw() {
     bird.draw();
     getReady.draw();
     gameOver.draw();
+    score.draw();
 
 
 
