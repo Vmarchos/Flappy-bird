@@ -22,6 +22,14 @@ const state = {
 
 }
 
+//позиция кнопки старта
+const startBtn = {
+    x: 120,
+    y: 263,
+    w: 83,
+    h: 29
+}
+
 //отслеживание стадии игры
 cvs.addEventListener('click', function (evt) {
     switch (state.current) {
@@ -32,7 +40,24 @@ cvs.addEventListener('click', function (evt) {
             bird.flap();
             break;
         case state.over:
-            state.current = state.getReady;
+            let rect = cvs.getBoundingClientRect();
+            let clickX = evt.clientX - rect.left;
+            let clickY = evt.clientY - rect.top;
+
+            //Проверка кликнули ли по кнопке старта
+            if (clickX >= startBtn.x &&
+                clickX <= startBtn.x + startBtn.w
+                && clickY >= startBtn.y
+                && clickY <= startBtn.y + startBtn.h) {
+                pipes.reset();
+                bird.speedReset();
+                score.reset();
+                state.current = state.getReady;
+
+
+            }
+
+
             break;
 
     }
@@ -148,6 +173,10 @@ const bird = {
         }
 
 
+    },
+    speedReset: function () {
+        this.speed = 0;
+
     }
 
 }
@@ -256,6 +285,9 @@ const pipes = {
             }
         }
 
+    },
+    reset: function () {
+        this.position = [];
     }
 
 }
@@ -287,6 +319,10 @@ const score = {
 
 
         }
+
+    },
+    reset: function () {
+        this.value = 0;
 
     }
 }
