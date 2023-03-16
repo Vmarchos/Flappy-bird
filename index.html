@@ -15,6 +15,7 @@
             background-attachment: fixed;
             background-size: cover;
             background-repeat: no-repeat;
+            box-sizing: border-box;
 
 
 
@@ -25,17 +26,28 @@
             border: 1px solid #000;
             display: block;
             margin: 0 auto;
+            position: absolute;
         }
 
         #container {
-            display: flex;
-            align-items: stretch;
-            justify-content: center;
+
+            box-sizing: border-box;
+            height: 100vh;
         }
 
         * {
             margin: 0;
             padding: 0;
+            touch-action: none;
+            user-select: none;
+        }
+
+        #canContainer {
+            right: 50%;
+            bottom: 50%;
+            transform: translate(50%, 50%);
+            position: absolute;
+
         }
     </style>
 </head>
