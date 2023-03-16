@@ -4,7 +4,6 @@ const ctx = cvs.getContext("2d");
 
 
 
-
 //переменные и константы
 let frames = 0;
 const DEGREE = Math.PI / 180;
@@ -41,7 +40,7 @@ const state = {
 
 //позиция кнопки старта
 const startBtn = {
-    x: 155,
+    x: 120,
     y: 263,
     w: 83,
     h: 29
@@ -108,8 +107,7 @@ const fg = {
     dx: 2,
     draw: function () {
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
-        ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w, this.y, this.w * 1.3, this.h);
-
+        ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w, this.y, this.w, this.h);
 
     },
     update: function () {
