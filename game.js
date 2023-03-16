@@ -39,14 +39,6 @@ const state = {
 
 }
 
-//позиция кнопки старта
-const startBtn = {
-    x: 120,
-    y: 263,
-    w: 83,
-    h: 29
-}
-
 //отслеживание стадии игры
 cvs.addEventListener('click', function (evt) {
     switch (state.current) {
@@ -59,15 +51,9 @@ cvs.addEventListener('click', function (evt) {
             FLAP.play();
             break;
         case state.over:
-            let rect = cvs.getBoundingClientRect();
-            let clickX = evt.clientX - rect.left;
-            let clickY = evt.clientY - rect.top;
 
-            //Проверка кликнули ли по кнопке старта
-            if (clickX >= startBtn.x &&
-                clickX <= startBtn.x + startBtn.w
-                && clickY >= startBtn.y
-                && clickY <= startBtn.y + startBtn.h) {
+
+            if (cvs) {
                 pipes.reset();
                 bird.speedReset();
                 score.reset();

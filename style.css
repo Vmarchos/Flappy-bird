@@ -13,8 +13,12 @@ body {
 
 canvas {
     border: 1px solid #000;
-    display: none;
+    display: block;
     margin: 0 auto;
+    touch-action: none;
+    user-select: none;
+    width: 400px;
+    height: 100vh;
 
 
 }
@@ -42,6 +46,7 @@ canvas {
 }
 
 #startdiv {
+    display: none;
     background-image: url('img/start-bac.jpg');
     position: absolute;
     width: 100%;
