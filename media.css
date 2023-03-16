@@ -1,19 +1,16 @@
 @media (min-width: 320px) and (max-width: 500px) {
     canvas {
         width: 320px;
-        height: 480px;
+        height: 500px;
     }
 
     body {
         width: 320px;
-        height: 480px;
-        margin: 0 auto;
-    }
-
-    html {
-        width: 320px;
         height: 500px;
         margin: 0 auto;
     }
+
+
+
 
 }
