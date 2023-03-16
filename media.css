@@ -1,7 +1,6 @@
 @media (min-width: 320px) and (max-width: 500px) {
-    body {
-        max-width: 320px;
-        max-height: 480px;
-        overflow: hidden;
+    canvas {
+        width: 90vh;
+        height: 90vh;
     }
 }
