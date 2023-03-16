@@ -41,7 +41,7 @@ const state = {
 
 //позиция кнопки старта
 const startBtn = {
-    x: 120,
+    x: 155,
     y: 263,
     w: 83,
     h: 29
@@ -108,7 +108,8 @@ const fg = {
     dx: 2,
     draw: function () {
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
-        ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w, this.y, this.w, this.h);
+        ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w, this.y, this.w * 1.3, this.h);
+
 
     },
     update: function () {
