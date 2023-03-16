@@ -4,6 +4,7 @@ const ctx = cvs.getContext("2d");
 
 
 
+
 //переменные и константы
 let frames = 0;
 const DEGREE = Math.PI / 180;
