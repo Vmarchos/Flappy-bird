@@ -10,22 +10,23 @@
     <link href="https://fonts.googleapis.com/css?family=Teko:700" rel="stylesheet">
     <style>
         body {
+
+            touch-action: none;
+            user-select: none;
             background-image: url(img/bacg.png);
             background-position: center center;
             background-attachment: fixed;
             background-size: cover;
             background-repeat: no-repeat;
             box-sizing: border-box;
-
-
-
-
         }
+
 
         canvas {
             border: 1px solid #000;
             display: block;
             margin: 0 auto;
+
 
         }
 
@@ -33,26 +34,29 @@
 
             box-sizing: border-box;
             height: 100vh;
-            display: flex;
-            justify-content: center;
+
+
+
         }
 
 
         * {
             margin: 0;
-            padding: 0;
-            touch-action: none;
-            user-select: none;
+            box-sizing: border-box;
         }
 
-        #canContainer {}
+        #canContainer {
+            position: absolute;
+            right: 50%;
+            bottom: 50%;
+            transform: translate(50%, 50%);
+        }
     </style>
 </head>
 
 <body>
     <div id="container">
         <div id="canContainer">
-
             <canvas id="canvas" width="320px" height="480px"></canvas>
         </div>
     </div>
