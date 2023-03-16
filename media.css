@@ -7,6 +7,13 @@
     body {
         width: 320px;
         height: 480px;
-        overflow: hidden;
+        margin: 0 auto;
     }
+
+    html {
+        width: 320px;
+        height: 500px;
+        margin: 0 auto;
+    }
+
 }
