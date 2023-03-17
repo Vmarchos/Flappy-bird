@@ -20,7 +20,7 @@
 
 @media (max-width: 740px) {
     #canvas {
-        width: 600px;
+        width: 100vw;
 
     }
 }
@@ -46,7 +46,7 @@
     }
 
     #canvas {
-        width: 440px;
+        width: 100vw;
 
     }
 }
@@ -60,7 +60,7 @@
     }
 
     #canvas {
-        width: 440px;
+        width: 100vw;
 
     }
 
@@ -98,7 +98,7 @@
 
 @media(max-width:315px) {
     #canvas {
-        width: 220px;
+        width: 100vw;
 
     }
 }
