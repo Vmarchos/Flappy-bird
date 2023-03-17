@@ -44,10 +44,6 @@ const state = {
 cvs.addEventListener('click', moveUp);
 document.addEventListener('keydown', function (event) {
     switch (state.current) {
-        case state.getReady:
-            state.current = state.game;
-            SWOOSHING.play();
-            break;
         case state.game:
             bird.flap();
             FLAP.play();
