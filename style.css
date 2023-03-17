@@ -17,8 +17,9 @@ canvas {
     margin: 0 auto;
     touch-action: none;
     user-select: none;
-    width: 400px;
+    width: 700px;
     height: 100vh;
+
 
 
 }
@@ -63,7 +64,7 @@ canvas {
     position: absolute;
     width: 150px;
     height: 80px;
-    top: 50%;
+    top: 40%;
     left: calc(50% - 75px);
     cursor: pointer;
     transition: transform 0.5s;
@@ -73,12 +74,7 @@ canvas {
     transform: scale(1.2);
 }
 
-#bird1 img {
-    top: 50%;
-    left: calc(30% - 75px);
-    cursor: pointer;
-    transform: scaleX(-1);
-}
+
 
 #startdiv h1 {
     font-family: 'Rubik Iso', cursive;
@@ -91,6 +87,8 @@ canvas {
 #optionbtn {
     display: flex;
     justify-content: flex-end;
+    margin-right: 20px;
+    margin-top: 20px;
 }
 
 #optionbtn button {
@@ -101,9 +99,73 @@ canvas {
     font-family: 'Rubik Iso', cursive;
     font-size: 20px;
     cursor: pointer;
+    transition: transform 0.5s;
+    border: #000 solid 2px;
+
 
 }
 
+#optionbtn button:hover {
+    transform: scale(1.2);
+}
+
 #rules {
-    background-image: url(img/start-bac.jpg);
+    display: none;
+    flex-direction: row-reverse;
+    border: solid 10px;
+    position: absolute;
+    width: 700px;
+    right: 20%;
+    top: 60%;
+    font-family: 'Bungee Spice', cursive;
+    font-size: 21px;
+    background-color: #dabea8;
+
+
+
+}
+
+#rules #text {
+    margin-right: 30px;
+}
+
+#hiderules {
+    position: absolute;
+    right: -3px;
+    top: -15px;
+    width: 30px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 5px;
+    margin: 15px 10px;
+    height: 30px;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+#hiderules:hover {
+    transform: scale(1.2);
+}
+
+
+#hiderules span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #000;
+    margin: 5px 0;
+    top: 9px;
+    left: 0;
+    position: absolute;
+    transform: rotate(45deg);
+}
+
+#hiderules span:last-child {
+    transform: rotate(-45deg);
+
+}
+
+#back_menu {
+    display: flex;
+    justify-content: flex-end;
 }

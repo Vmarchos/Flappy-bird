@@ -369,4 +369,19 @@ function loop() {
 
     requestAnimationFrame(loop);
 }
+function start() {
+    const startDiv = document.getElementById("startdiv")
+    startDiv.style.display = "none"
+    cvs.style.display = "block"
+}
+
+function showRules() {
+    const rules = document.getElementById("rules");
+    rules.style.display = "flex"
+}
+function hideRules() {
+    const hideRules = document.getElementById("rules");
+    rules.style.display = "none"
+
+}
 loop();

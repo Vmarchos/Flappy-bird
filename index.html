@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Iso&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
     <style>
 
     </style>
@@ -26,19 +29,35 @@
             </div>
 
             <div id="optionbtn">
-                <button onclick="showRules()">Правила игры </button>
+                <button onclick="showRules()">Rules of the game </button>
                 <div id="rules">
-                    
-
+                    <div id="hiderules" onclick="hideRules()">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div id="text">
+                        Control the flight of the bird by clicking the "left mouse button", or by pressing the
+                        "space
+                        bar".
+                        Consider the bird is constantly under the influence of gravity. Don't let it fall or crash
+                        into
+                        an
+                        obstacle.
+                    </div>
                 </div>
+
+
 
 
             </div>
 
 
+
         </div>
-        <div id="canContainer">
+        <div id=" canContainer">
+
             <canvas id="canvas" width="320px" height="480px"></canvas>
+
         </div>
     </div>
 

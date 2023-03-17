@@ -1,14 +1,104 @@
-@media (min-width: 320px) and (max-width: 500px) {
-    * {
-        margin: 0;
-        padding: 0;
+@media (max-width: 1000px) {
+    #optionbtn #rules {
+        width: 600px;
+        right: 10%;
+        top: 60%;
+        font-family: 'Bungee Spice', cursive;
+        font-size: 16px;
+        background-color: #dabea8;
+
+    }
+}
+
+@media (max-width: 700px) {
+    #optionbtn #rules {
+        width: 600px;
+        right: 5%;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 740px) {
+    #canvas {
+        width: 600px;
+
+    }
+}
+
+@media (max-width: 640px) {
+    #optionbtn #rules {
+        width: 500px;
+        right: 5%;
+        font-size: 16px;
     }
 
+    #canvas {
+        width: 540px;
 
+    }
+}
 
+@media (max-width: 540px) {
+    #optionbtn #rules {
+        width: 400px;
+        right: 5%;
+        font-size: 16px;
+    }
 
+    #canvas {
+        width: 440px;
 
+    }
+}
+
+@media (max-width: 440px) {
+    #optionbtn #rules {
+        width: 300px;
+        right: 5%;
+        font-size: 16px;
+
+    }
+
+    #canvas {
+        width: 320px;
+
+    }
+
+    #startdiv #optionbtn {
+
+        justify-content: center;
+
+    }
+
+    #container #startdiv h1 {
+        font-family: 'Rubik Iso', cursive;
+        font-size: 75px;
+        position: absolute;
+        top: 10%;
+        left: calc(50% - 145px);
+    }
+}
+
+@media (max-width: 320px) {
+    #optionbtn #rules {
+        width: 200px;
+        right: 5%;
+        font-size: 14px;
+    }
+
+    #container #startdiv h1 {
+        font-family: 'Rubik Iso', cursive;
+        font-size: 50px;
+        position: absolute;
+        top: 10%;
+        left: calc(50% - 91px);
+    }
 
 }
 
-@media (max-width: 700px) {}
+@media(max-width:315px) {
+    #canvas {
+        width: 220px;
+
+    }
+}
