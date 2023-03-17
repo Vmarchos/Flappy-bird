@@ -40,7 +40,22 @@ const state = {
 }
 
 //отслеживание стадии игры
-cvs.addEventListener('click', function (evt) {
+
+cvs.addEventListener('click', moveUp);
+document.addEventListener('keydown', function (event) {
+    switch (state.current) {
+        case state.getReady:
+            state.current = state.game;
+            SWOOSHING.play();
+            break;
+        case state.game:
+            bird.flap();
+            FLAP.play();
+            break;
+    }
+});
+
+function moveUp() {
     switch (state.current) {
         case state.getReady:
             state.current = state.game;
@@ -51,23 +66,18 @@ cvs.addEventListener('click', function (evt) {
             FLAP.play();
             break;
         case state.over:
-
-
             if (cvs) {
                 pipes.reset();
                 bird.speedReset();
                 score.reset();
                 state.current = state.getReady;
-
-
             }
-
-
             break;
-
     }
+}
 
-});
+
+
 
 
 //бэкграунд
