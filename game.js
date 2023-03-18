@@ -93,6 +93,13 @@ function moveUp() {
 }
 
 
+function vibrate() {
+    if ("vibrate" in navigator) {
+        navigator.vibrate([200]);
+    }
+}
+
+
 
 
 
@@ -194,6 +201,7 @@ const bird = {
                 if (state.current == state.game) {
                     state.current = state.over;
                     DIE.play();
+                    vibrate();
 
                 }
             }
@@ -249,7 +257,8 @@ const gameOver = {
             ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
         }
 
-    }
+    },
+
 
 }
 
@@ -303,12 +312,14 @@ const pipes = {
                 bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h) {
                 state.current = state.over;
                 HIT.play();
+                vibrate();
             }
             //нижнюю
             if (bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w &&
                 bird.y + bird.radius > bottomPipeYPos && bird.y - bird.radius < bottomPipeYPos + this.h) {
                 state.current = state.over;
                 HIT.play();
+                vibrate();
             }
 
             //движение труб влево 
@@ -366,7 +377,6 @@ const score = {
 
     }
 }
-
 
 
 //отрисовка всех элементов на канвасе.
