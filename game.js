@@ -412,4 +412,11 @@ function hideRules() {
     rules.style.display = "none"
 
 }
+function backToMenu() {
+    cvs.style.display = 'none';
+    const startDiv = document.getElementById("startdiv")
+    startDiv.style.display = "block"
+
+
+}
 loop();
