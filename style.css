@@ -29,7 +29,16 @@ canvas {
     background-color: #6893fd;
     font-family: 'Rubik Iso', cursive;
     border-radius: 20px;
+    cursor: pointer;
+    border: solid 1px black;
+    transition: transform 0.5s;
+    margin-top: 2px;
+    margin-left: 5px;
 
+}
+
+#backMenu button:hover {
+    transform: scale(1.1);
 }
 
 
