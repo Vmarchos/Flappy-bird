@@ -6,7 +6,7 @@ const ctx = cvs.getContext("2d");
 
 
 //переменные и константы
-let frames = 0;
+let frames = 0;//кол-во кадров
 const DEGREE = Math.PI / 180;
 let soundOn = true;
 let soundButton = document.getElementById('soundButton')
@@ -123,6 +123,7 @@ const fg = {
         ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x + this.w, this.y, this.w, this.h);
 
     },
+    //В методе update объекта fg выполняем обновление его позиции на основе текущего состояния игры. Обновление позиции достигается путем уменьшения координаты x на dx и зацикливания ее относительно половины ширины объекта fg.
     update: function () {
         if (state.current == state.game) {
             this.x = (this.x - this.dx) % (this.w / 2)
@@ -133,29 +134,31 @@ const fg = {
 }
 //сама птичка
 const bird = {
-    animation: [{ sX: 276, sY: 112 },
-    { sX: 276, sY: 139 },
-    { sX: 276, sY: 164 },
-    { sX: 276, sY: 139 }
-
+    animation: [
+        { sX: 276, sY: 112 },
+        { sX: 276, sY: 139 },
+        { sX: 276, sY: 164 },
+        { sX: 276, sY: 139 }
+        //массив объектов с координатами для отрисовки птицы в каждом кадре анимации.
     ],
     x: 50,
     y: 150,
     w: 34,
     h: 26,
 
-    radius: 12,
+    radius: 12,//радиус окружности, которая охватывает птицу на игровом поле.
 
-    frame: 0,
+    frame: 0,// индекс текущего кадра анимации.
 
-    gravity: 0.25,
-    jump: 4.5,
-    speed: 0,
-    rotation: 0,
+    gravity: 0.25,//значение гравитации, которая влияет на скорость падения птицы.
+    jump: 4.5,// значение скорости при прыжке.
+    speed: 0,//текущая скорость птицы.
+    rotation: 0,//угол поворота птицы.
 
 
 
     draw: function () {
+        // использует текущий кадр анимации птицы и устанавливает угол поворота, чтобы создать эффект взмаха крыльев птицы.
         let bird = this.animation[this.frame];
 
         ctx.save();
@@ -166,7 +169,7 @@ const bird = {
 
     },
     flap: function () {
-        this.speed = -this.jump;
+        this.speed = -this.jump;//устанавливает скорость птицы в противоположную сторону, чтобы создать эффект подскока.
 
     },
     //если состояние игры getReady , птица махает крыльями медлено 
@@ -174,7 +177,7 @@ const bird = {
         this.period = state.current == state.getReady ? 10 : 5;
         //мы увеличиваем кадр на 1, каждый период
         this.frame += frames % this.period == 0 ? 1 : 0;
-        //кадр идет от 0 до 4, затем снова возвращается к  0
+        // гарантируем, что значение номера кадра frame не превышает количество кадров в массиве animation 
         this.frame = this.frame % this.animation.length;
 
         //проверка на состояние игры 
@@ -183,8 +186,9 @@ const bird = {
             this.rotation = 0 * DEGREE;
         }
         else {
-            this.speed += this.gravity;
-            this.y += this.speed;
+            this.speed += this.gravity;// скорость птицы увеличивается на значение гравитации.
+            this.y += this.speed;// птица перемещается по вертикали в соответствии со своей скоростью.
+            //Далее проверяется, достигла ли птица земли. Если да, то её положение устанавливается на уровне земли, а  текущее состояние меняется на over.
             if (this.y + this.h / 2 >= cvs.height - fg.h) {
                 this.y = cvs.height - fg.h - this.h / 2;
                 if (state.current == state.game) {
@@ -193,7 +197,7 @@ const bird = {
 
                 }
             }
-            //Если скорость больше чем прыжок то птица падает
+            //Если скорость больше чем прыжок то птица падает и поворачивается на 90 градусов
             if (this.speed >= this.jump) {
                 this.rotation = 90 * DEGREE;
                 this.frame = 1;
@@ -207,7 +211,7 @@ const bird = {
 
     },
     speedReset: function () {
-        this.speed = 0;
+        this.speed = 0;//обнуляем скорость птицы 
 
     }
 
@@ -283,7 +287,7 @@ const pipes = {
     },
     update: function () {
         if (state.current !== state.game) return;
-        if (frames % 100 == 0) {
+        if (frames % 100 == 0) {      //добавляем новые трубы в массив position    каждые 100 кадров с помощью метода push(), где x - это ширина канваса, а y - случайное значение от -150 до 0 умноженное на случайное значение.
             this.position.push({
                 x: cvs.width,
                 y: this.maxYPos * (Math.random() + 1),
@@ -312,7 +316,7 @@ const pipes = {
             //если трубы выходят за пределы канваса удаляем их из массива
             if (p.x + this.w <= 0) {
                 this.position.shift();
-                score.value += 1;
+                score.value += 1;//Увеличивает значение переменной score.value на единицу при прохождении каждой трубы и обновляем значение переменной score.best, если текущий результат лучше предыдущего, а также сохраняем лучший результат в локальном хранилище браузера с помощью метода localStorage.setItem().
                 SCORE_S.play();
                 score.best = Math.max(score.value, score.best);
                 localStorage.setItem('best', score.best)
@@ -322,14 +326,14 @@ const pipes = {
 
     },
     reset: function () {
-        this.position = [];
+        this.position = [];//очищаем массив что бы начать новую игру
     }
 
 }
 
 //Очки 
 const score = {
-    best: parseInt(localStorage.getItem('best')) || 0,
+    best: parseInt(localStorage.getItem('best')) || 0,// Если в локальном хранилище ничего не найдено, то переменной score.best присваивается значение 0.
     value: 0,
 
     draw: function () {
@@ -357,14 +361,15 @@ const score = {
 
     },
     reset: function () {
-        this.value = 0;
+        this.value = 0;//cбрасываем текущий результат
+
 
     }
 }
 
 
 
-//рисовка
+//отрисовка всех элементов на канвасе.
 function draw() {
     ctx.fillStyle = "#70c5ce";
     ctx.fillRect(0, 0, cvs.width, cvs.height);
@@ -380,7 +385,7 @@ function draw() {
 
 }
 
-//обновление
+//обновление состояния игры на каждом кадре.
 function update() {
     bird.update();
     fg.update();
@@ -394,25 +399,25 @@ function loop() {
     draw();
     frames++;
 
-    requestAnimationFrame(loop);
+    requestAnimationFrame(loop);//вызываем loop() снова для запуска следующего кадра, и таким образом происходит бесконечный цикл обновления и отображения состояния игры на каждый кадр.
 }
-function start() {
+function start() {//прячет экран загрузки и показывает канвас.
     const startDiv = document.getElementById("startdiv")
     startDiv.style.display = "none"
     cvs.style.display = "block"
 
 }
 
-function showRules() {
+function showRules() {//показывает правила игры.
     const rules = document.getElementById("rules");
     rules.style.display = "flex"
 }
-function hideRules() {
+function hideRules() {//скрывает правила игры.
     const hideRules = document.getElementById("rules");
     rules.style.display = "none"
 
 }
-function backToMenu() {
+function backToMenu() {//скрывает канвас и показывает экран загрузки.
     cvs.style.display = 'none';
     const startDiv = document.getElementById("startdiv")
     startDiv.style.display = "block"
