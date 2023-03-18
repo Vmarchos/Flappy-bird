@@ -8,6 +8,26 @@ const ctx = cvs.getContext("2d");
 //переменные и константы
 let frames = 0;
 const DEGREE = Math.PI / 180;
+let soundOn = true;
+let soundButton = document.getElementById('soundButton')
+
+//Отключение и включение звука
+soundButton.addEventListener("click", function () {
+    SCORE_S.muted = !SCORE_S.muted;
+    FLAP.muted = !FLAP.muted;
+    HIT.muted = !HIT.muted;
+    SWOOSHING.muted = !SWOOSHING.muted;
+    DIE.muted = !DIE.muted;
+
+    if (SCORE_S.muted) {
+        soundButton.textContent = "Sound on";
+    } else {
+        soundButton.textContent = "Sound off";
+    }
+
+    update(); // вызываем функцию update() после изменения состояния звука
+});
+
 
 //загрузка спрайта
 const sprite = new Image();
@@ -366,6 +386,7 @@ function update() {
     fg.update();
     pipes.update();
 
+
 }
 //цикл
 function loop() {
@@ -379,6 +400,7 @@ function start() {
     const startDiv = document.getElementById("startdiv")
     startDiv.style.display = "none"
     cvs.style.display = "block"
+
 }
 
 function showRules() {

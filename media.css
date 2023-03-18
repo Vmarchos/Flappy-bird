@@ -94,6 +94,12 @@
         left: calc(50% - 91px);
     }
 
+    #optionbtn button {
+
+        font-size: 13px;
+
+    }
+
 }
 
 @media(max-width:315px) {

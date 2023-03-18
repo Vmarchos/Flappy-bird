@@ -101,6 +101,7 @@ canvas {
     cursor: pointer;
     transition: transform 0.5s;
     border: #000 solid 2px;
+    margin-left: 15px;
 
 
 }
